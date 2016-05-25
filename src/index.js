@@ -95,5 +95,5 @@
     }
 
     refreshREM();
-    win.rem = exports;
+    win.flexible = exports;
 }(750, 750, 16));

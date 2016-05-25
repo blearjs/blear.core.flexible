@@ -8,6 +8,7 @@
 'use strict';
 
 var index = require('../src/index.js');
+var flexible = window.flexible;
 
 describe('测试文件', function () {
     it('exports', function (done) {

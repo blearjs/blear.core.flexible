@@ -59,7 +59,7 @@
         eMeta.setAttribute('content', 'width=device-width,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale);
         headEl.appendChild(eMeta);
         htmlEl.classList.add('dpr' + dpr);
-        baseFontSize = dpr * baseFontSize + 'px';
+        baseFontSize = baseFontSize + 'px';
     };
 
 

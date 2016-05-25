@@ -53,11 +53,6 @@
         }
 
         exports.dpr = dpr;
-        var scale = exports.scale = 1 / dpr;
-        var eMeta = doc.createElement('meta');
-        eMeta.setAttribute('name', 'viewport');
-        eMeta.setAttribute('content', 'width=device-width,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale);
-        headEl.appendChild(eMeta);
         htmlEl.classList.add('dpr' + dpr);
         baseFontSize = baseFontSize + 'px';
     };

@@ -27,12 +27,17 @@
 </head>
 <body ontouchstart="">
 
-<h1>font-size</h1>
-<h2 id="ret"></h2>
+<h1 id="h1">font-size</h1>
+<h2 id="h2"></h2>
 
 <script>
     flexible.onChange(function () {
-        document.getElementById('ret').innerHTML = window.innerWidth;
+        var h1El = document.getElementById('h1');
+        var h2El = document.getElementById('h2');
+        var css = getComputedStyle(h1El);
+
+        h1El.innerHTML = 'font-size: ' + css.getPropertyValue('font-size');
+        h2El.innerHTML = 'window.innerWidth = ' + window.innerWidth;
     });
 </script>
 

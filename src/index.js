@@ -35,7 +35,6 @@
     var visible = false;
 
     htmlEl.style.visibility = 'hidden';
-    baseFontSize = baseFontSize + 'px';
     headEl.appendChild(styleEl);
 
 
@@ -60,6 +59,7 @@
         eMeta.setAttribute('content', 'width=device-width,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale);
         headEl.appendChild(eMeta);
         htmlEl.classList.add('dpr' + dpr);
+        baseFontSize = dpr * baseFontSize + 'px';
     };
 
 
@@ -114,6 +114,11 @@
         }
     });
 
+
+    computeDPR();
+    refreshREM();
+    win.flexible = exports;
+
     if (doc.readyState === 'complete') {
         doc.body.style.fontSize = baseFontSize;
     } else {
@@ -121,8 +126,4 @@
             doc.body.style.fontSize = baseFontSize;
         });
     }
-
-    computeDPR();
-    refreshREM();
-    win.flexible = exports;
 }(750, 1024, 16));

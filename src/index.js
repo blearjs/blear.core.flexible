@@ -32,7 +32,6 @@
         }
     };
     var dpr = 1;
-    var classList = [];
     var visible = false;
 
     htmlEl.style.visibility = 'hidden';
@@ -54,13 +53,13 @@
             dpr = 1;
         }
 
-        classList.push('dpr-' + dpr);
         exports.dpr = dpr;
         var scale = exports.scale = 1 / dpr;
         var eMeta = doc.createElement('meta');
         eMeta.setAttribute('name', 'viewport');
         eMeta.setAttribute('content', 'width=device-width,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale);
         headEl.appendChild(eMeta);
+        htmlEl.classList.add('dpr' + dpr);
     };
 
 
@@ -69,10 +68,6 @@
      */
     var computeREM = function computeREM() {
         var width = htmlEl.getBoundingClientRect().width;
-
-        if (!maxWidth) {
-            maxWidth = 540;
-        }
 
         if (width > maxWidth) {
             width = maxWidth;
@@ -130,4 +125,4 @@
     computeDPR();
     refreshREM();
     win.flexible = exports;
-}(750, 750, 16));
+}(750, 1024, 16));

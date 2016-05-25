@@ -7,12 +7,18 @@
 
 'use strict';
 
-var index = require('../src/index.js');
+require('../src/index.js');
 var flexible = window.flexible;
 
 describe('测试文件', function () {
     it('exports', function (done) {
-        expect(index).toEqual('index');
-        done();
+        var rem = flexible.px2rem(100);
+        var px = flexible.rem2px(rem);
+
+        flexible.onChange(function () {
+            done();
+        });
+
+        expect(px).toEqual(100);
     });
 });

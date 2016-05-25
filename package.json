@@ -16,7 +16,9 @@
   "main": "src/index.js",
   "keywords": [
     "blear",
-    "__template__",
+    "core",
+    "flexible",
+    "rem",
     "cloudcome",
     "ydr.me"
   ],
@@ -26,13 +28,13 @@
     "url": "http://ydr.me"
   },
   "contributors": [],
-  "homepage": "https://github.com/blearjs/blear.__template__",
+  "homepage": "https://github.com/blearjs/blear.core.flexible",
   "repository": {
     "type": "git",
-    "url": "https://github.com/blearjs/blear.__template__"
+    "url": "https://github.com/blearjs/blear.core.flexible"
   },
   "bugs": {
-    "url": "https://github.com/blearjs/blear.__template__/issues"
+    "url": "https://github.com/blearjs/blear.core.flexible/issues"
   },
   "dependencies": {},
   "peerDependencies": {},

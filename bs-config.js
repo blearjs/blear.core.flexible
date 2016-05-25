@@ -25,8 +25,7 @@ module.exports = {
         }
     },
     "files": [
-        "./coolie.js",
-        './examples/**'
+        './example/**'
     ],
     "watchOptions": {},
     "server": {

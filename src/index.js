@@ -31,10 +31,37 @@
             return rem * exports.value;
         }
     };
+    var dpr = 1;
+    var classList = [];
+    var visible = false;
 
-
+    htmlEl.style.visibility = 'hidden';
     baseFontSize = baseFontSize + 'px';
     headEl.appendChild(styleEl);
+
+
+    /**
+     * 计算 DPR
+     */
+    var computeDPR = function () {
+        var devicePixelRatio = win.devicePixelRatio || 1;
+
+        if (devicePixelRatio > 2) {
+            dpr = 3;
+        } else if (devicePixelRatio > 1) {
+            dpr = 2;
+        } else {
+            dpr = 1;
+        }
+
+        classList.push('dpr-' + dpr);
+        exports.dpr = dpr;
+        var scale = exports.scale = 1 / dpr;
+        var eMeta = doc.createElement('meta');
+        eMeta.setAttribute('name', 'viewport');
+        eMeta.setAttribute('content', 'width=device-width,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale);
+        headEl.appendChild(eMeta);
+    };
 
 
     /**
@@ -66,6 +93,12 @@
 
         htmlEl.style.fontSize = rem + 'px';
         exports.value = rem;
+
+        if (!visible) {
+            visible = true;
+            htmlEl.style.visibility = 'visible';
+        }
+
         change();
     };
 
@@ -94,6 +127,7 @@
         });
     }
 
+    computeDPR();
     refreshREM();
     win.flexible = exports;
 }(750, 750, 16));

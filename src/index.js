@@ -34,7 +34,7 @@
     var dpr = 1;
     var visible = false;
 
-    htmlEl.style.visibility = 'hidden';
+    htmlEl.style.opacity = '0';
     headEl.appendChild(styleEl);
 
 
@@ -74,7 +74,11 @@
         }
 
         var rem = width * 100 / designWidth;
-        var remStyleText = 'html{font-size:' + rem + 'px !important}';
+        var remStyleText = 'html{' +
+            'font-size:' + rem + 'px !important;' +
+            '-webkit-transition: opacity 1s cubic-bezier(.075,.82,.165,1);' +
+            'transition: opacity 1s cubic-bezier(.075,.82,.165,1);' +
+            '}';
 
         if (styleEl.styleSheet) {
             styleEl.styleSheet.cssText = remStyleText;
@@ -91,7 +95,7 @@
 
         if (!visible) {
             visible = true;
-            htmlEl.style.visibility = 'visible';
+            htmlEl.style.opacity = '1';
         }
 
         change();

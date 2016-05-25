@@ -13,3 +13,33 @@
 [coveralls-img]: https://img.shields.io/coveralls/blearjs/blear.core.flexible/master.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/github/blearjs/blear.core.flexible?branch=master
 
+
+## 用法
+```
+npm install -S blear.core.flexible
+```
+
+```
+<head>
+<script src="/node_modules/blear.core.flexible/src/index.js">
+</head>
+```
+
+## 接口
+全局注册 `flexible`。
+
+### `flexible.value`
+当前的 html fontSize 计算值。
+
+
+### `flexible.px2rem(px)`
+像素大小计算为 rem 大小。
+
+
+### `flexible.rem2px(rem)`
+rem 大小计算为像素大小。
+
+
+### `flexible.onChange(fn)`
+监听 html fontSize 的变化。
+

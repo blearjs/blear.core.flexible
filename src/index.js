@@ -1,6 +1,9 @@
 /**
  * @author ydr.me
- * @ref https://github.com/kujian/simple-flexible/blob/master/flexible.js
+ * @create 2016-05-25 10:17
+ * @update 2017-01-20 11:36:55
+ *
+ * @ref https://github.com/amfe/lib-flexible
  */
 ;(function (designWidth, maxWidth, baseFontSize) {
     'use strict';
@@ -111,7 +114,6 @@
         change();
     };
 
-
     /**
      * 刷新 REM
      */
@@ -121,7 +123,6 @@
     };
 
     win.addEventListener('resize', refreshREM);
-
     win.addEventListener('pageshow', function (ev) {
         // true: 网页来自浏览器缓存
         // false: 网页不是来自浏览器缓存（来自服务器）
@@ -129,7 +130,6 @@
             refreshREM();
         }
     });
-
 
     computeDPR();
     refreshREM();

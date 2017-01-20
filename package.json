@@ -1,7 +1,7 @@
 {
   "name": "blear.core.flexible",
   "version": "2.0.0",
-  "description": "移动端 rem 动态计算",
+  "description": "移动端 rem 动态计算、动态缩放",
   "scripts": {
     "live": "browser-sync start --config bs-config.js",
     "test": "node ./node_modules/.bin/karma start karma.conf.js --single-run",

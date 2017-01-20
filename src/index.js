@@ -134,12 +134,4 @@
     computeDPR();
     refreshREM();
     win.flexible = exports;
-
-    // if (doc.readyState === 'complete') {
-    //     htmlEl.style.opacity = '1';
-    // } else {
-    //     doc.addEventListener('DOMContentLoaded', function () {
-    //         htmlEl.style.opacity = '1';
-    //     });
-    // }
 }(750, 1024, 16));

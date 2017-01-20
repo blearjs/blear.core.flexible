@@ -15,7 +15,7 @@
     <meta name="author" content="云淡然;http://ydr.me">
     <meta name="keywords" content="关键词1,关键词2">
     <meta name="description" content="描述语句">
-    <script src="../src/index.js"></script>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>index.html</title>
     <style>
         h1 {
@@ -31,15 +31,22 @@
 <h2 id="h2"></h2>
 
 <script>
-    flexible.onChange(function () {
-        var h1El = document.getElementById('h1');
-        var h2El = document.getElementById('h2');
-        var css = getComputedStyle(h1El);
+    var h1El = document.getElementById('h1');
+    var h2El = document.getElementById('h2');
+    var css = getComputedStyle(h1El);
 
-        h1El.innerHTML = 'font-size: ' + css.getPropertyValue('font-size');
-        h2El.innerHTML = 'window.innerWidth = ' + window.innerWidth;
-    });
+    h1El.innerHTML = 'font-size: ' + css.getPropertyValue('font-size');
+    h2El.innerHTML = 'window.innerWidth = ' + window.innerWidth;
 </script>
+
+
+<div id="demo"></div>
+
+
+<script src="/node_modules/coolie.js/coolie.js"
+        data-config="/examples/coolie-config.js"
+        data-main="index.js"></script>
+
 
 </body>
 </html>

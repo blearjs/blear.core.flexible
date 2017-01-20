@@ -10,6 +10,7 @@
     var htmlEl = doc.documentElement;
     var headEl = doc.head;
     var styleEl = doc.createElement('style');
+    var viewportEl = doc.querySelector('meta[name="viewport"]');
     var refreshREMTimeid;
     var onChangeListeners = [];
     var change = function () {
@@ -17,21 +18,24 @@
             fn.call(exports);
         });
     };
+    var dpr = 1;
+    var rem = 16;
+    var scale = 1;
+    // 分割数量
+    var grids = 100;
     var exports = {
-        value: 1,
         onChange: function (fn) {
             if (typeof fn === 'function') {
                 onChangeListeners.push(fn);
             }
         },
-        px2rem: function (px) {
-            return px / exports.value;
+        px2rem: function (_px) {
+            return _px / rem;
         },
-        rem2px: function (rem) {
-            return rem * exports.value;
+        rem2px: function (_rem) {
+            return _rem * rem;
         }
     };
-    var dpr = 1;
     var visible = false;
 
     htmlEl.style.opacity = '0';
@@ -53,8 +57,8 @@
         }
 
         exports.dpr = dpr;
+        exports.scale = scale = 1 * (1 / dpr).toFixed(2);
         htmlEl.classList.add('dpr' + dpr);
-        baseFontSize = baseFontSize + 'px';
     };
 
 
@@ -62,17 +66,18 @@
      * 计算 REM
      */
     var computeREM = function computeREM() {
-        var width = htmlEl.getBoundingClientRect().width;
+        var deviceWidth = htmlEl.clientWidth;
 
-        if (width > maxWidth) {
-            width = maxWidth;
+        if (deviceWidth > maxWidth) {
+            deviceWidth = maxWidth;
         }
 
-        var rem = width * 100 / designWidth;
+        rem = deviceWidth * grids / designWidth;
         var remStyleText = 'html{' +
             'font-size:' + rem + 'px !important;' +
-            '-webkit-transition: opacity 1s cubic-bezier(.075,.82,.165,1);' +
-            'transition: opacity 1s cubic-bezier(.075,.82,.165,1);' +
+            'background-color:#fff;' +
+            // '-webkit-transition: opacity 0.5s cubic-bezier(.075,.82,.165,1);' +
+            'transition: opacity 0.5s linear;' +
             '}';
 
         if (styleEl.styleSheet) {
@@ -86,11 +91,21 @@
         }
 
         htmlEl.style.fontSize = rem + 'px';
-        exports.value = rem;
+        exports.rem = rem;
 
         if (!visible) {
             visible = true;
-            htmlEl.style.opacity = '1';
+            doc.body.style.fontSize = baseFontSize * dpr + 'px';
+            viewportEl.setAttribute(
+                'content',
+                'user-scalable=no,' +
+                'initial-scale=' + scale + ',' +
+                'maximum-scale=' + scale + ',' +
+                'minimum-scale=' + scale
+            );
+            setTimeout(function () {
+                htmlEl.style.opacity = '1';
+            }, 456);
         }
 
         change();
@@ -107,8 +122,10 @@
 
     win.addEventListener('resize', refreshREM);
 
-    win.addEventListener('pageshow', function (e) {
-        if (e.persisted) {
+    win.addEventListener('pageshow', function (ev) {
+        // true: 网页来自浏览器缓存
+        // false: 网页不是来自浏览器缓存（来自服务器）
+        if (ev.persisted) {
             refreshREM();
         }
     });
@@ -118,11 +135,11 @@
     refreshREM();
     win.flexible = exports;
 
-    if (doc.readyState === 'complete') {
-        doc.body.style.fontSize = baseFontSize;
-    } else {
-        doc.addEventListener('DOMContentLoaded', function () {
-            doc.body.style.fontSize = baseFontSize;
-        });
-    }
+    // if (doc.readyState === 'complete') {
+    //     htmlEl.style.opacity = '1';
+    // } else {
+    //     doc.addEventListener('DOMContentLoaded', function () {
+    //         htmlEl.style.opacity = '1';
+    //     });
+    // }
 }(750, 1024, 16));

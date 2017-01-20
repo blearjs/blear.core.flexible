@@ -1,6 +1,6 @@
 {
   "name": "blear.core.flexible",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "移动端 rem 动态计算",
   "scripts": {
     "live": "browser-sync start --config bs-config.js",

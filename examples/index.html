@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+ - 文件描述
+ - @author ydr.me
+ - @create 2016-05-25 10:02
+ -->
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="author" content="云淡然;http://ydr.me">
+    <meta name="keywords" content="关键词1,关键词2">
+    <meta name="description" content="描述语句">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="../src/index.js"></script>
+    <title>index.html</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .rem1 {
+            font-size: 1rem;
+            border: 1px solid #66CC44;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        window.onerror = function (err) {
+            alert(err);
+        };
+    </script>
+</head>
+<body ontouchstart="">
+
+<div class="rem1">1rem</div>
+
+<!--<script>-->
+    <!--flexible.onChange(function () {-->
+        <!--var h1El = document.getElementById('h1');-->
+        <!--var h2El = document.getElementById('h2');-->
+        <!--var css = getComputedStyle(h1El);-->
+
+        <!--h1El.innerHTML = 'font-size: ' + css.getPropertyValue('font-size');-->
+        <!--h2El.innerHTML = 'window.innerWidth = ' + window.innerWidth;-->
+    <!--});-->
+<!--</script>-->
+
+
+<div id="demo"></div>
+
+
+<script src="/node_modules/coolie.js/coolie.js"
+        data-config="/examples/coolie-config.js"
+        data-main="index.js"></script>
+
+
+</body>
+</html>
